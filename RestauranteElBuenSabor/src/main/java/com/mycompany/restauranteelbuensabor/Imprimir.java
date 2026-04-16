@@ -28,9 +28,9 @@ public class Imprimir {
         System.out.println("--- PEDIDO ACTUAL ---");
         while (i < Datos.nom.length) {
             if (Datos.cant[i] > 0) {
-// imprime producto con cantidad y subtotal parcial
+                // imprime producto con cantidad y subtotal parcial
                 System.out.printf("%-20s x%-6d $%,.0f%n", Datos.nom[i], Datos.cant[i], (Datos.p[i] * Datos.cant[i]));
-// suma al subtotal
+                // suma al subtotal
                 sub = sub + Datos.p[i] * Datos.cant[i];
             }
             i++;
@@ -46,7 +46,7 @@ public class Imprimir {
         double prop = 0;
         int cont = 0;
         double aux = 0;
-// calcula subtotal otra vez
+        // calcula subtotal otra vez
         int i = 0;
         while (i < Datos.nom.length) {
             if (Datos.cant[i] > 0) {
@@ -78,7 +78,7 @@ public class Imprimir {
         System.out.println(sep);
         System.out.printf("FACTURA No. %03d%n", Datos.nf);
         System.out.println("----------------------------------------");
-// imprime cada item del pedido
+        // imprime cada item del pedido
         int j = 0;
         while (j < Datos.nom.length) {
             if (Datos.cant[j] > 0) {
@@ -98,7 +98,7 @@ public class Imprimir {
         System.out.println("Gracias por su visita!");
         System.out.println("El Buen Sabor - Valledupar");
         System.out.println(sep);
-// actualiza estado e incrementa factura - tres responsabilidades en un metodo
+        // actualiza estado e incrementa factura - tres responsabilidades en un metodo
         Datos.nf = Datos.nf + 1;
         Datos.est = 0;
         Datos.tot = tot;
@@ -111,7 +111,7 @@ public class Imprimir {
         double prop = 0;
         int cont = 0;
         double aux = 0;
-// calcula subtotal otra vez igual que en imprimirFacturaCompleta
+        // calcula subtotal otra vez igual que en imprimirFacturaCompleta
         int i = 0;
         while (i < Datos.nom.length) {
             if (Datos.cant[i] > 0) {

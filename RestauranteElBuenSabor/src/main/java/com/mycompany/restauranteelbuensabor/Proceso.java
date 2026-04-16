@@ -18,7 +18,7 @@ public class Proceso {
         int i = 0;
         while (i < Datos.nom.length) {
             if (Datos.cant[i] > 0) {
-// multiplica precio por cantidad
+                // multiplica precio por cantidad
                 sub = sub + Datos.p[i] * Datos.cant[i];
                 cont = cont + 1;
             }
@@ -29,11 +29,11 @@ public class Proceso {
                 aux = sub - (sub * 0.05);
                 if (aux > 50000) {
                     iva = aux * 0.19;
-// suma iva al subtotal con descuento
+                    // suma iva al subtotal con descuento
                     tot = aux + iva;
                     tot = tot + (tot * 0.10);
                 } else {
-// suma iva al subtotal
+                    // suma iva al subtotal
                     iva = aux * 0.19;
                     tot = aux + iva;
                 }
@@ -45,7 +45,7 @@ public class Proceso {
         } else {
             if (sub > 50000) {
                 iva = sub * 0.19;
-// suma iva al subtotal
+                // suma iva al subtotal
                 tot = sub + iva;
                 tot = tot + (tot * 0.10);
             } else {
@@ -63,18 +63,18 @@ public class Proceso {
         double iva = 0;
         double prop = 0;
         double tmp = 0;
-// calcula subtotal con cantidad
+        // calcula subtotal con cantidad
         res = a * b;
         if (c > 0) {
-// aplica descuento
+            // aplica descuento
             res = res - (res * c);
         }
-// calcula iva
+        // calcula iva
         iva = res * d;
         tmp = iva;
         res = res + tmp;
         if (g) {
-// aplica propina si corresponde
+            // aplica propina si corresponde
             prop = res * e;
             res = res + prop;
         }

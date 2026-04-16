@@ -13,7 +13,7 @@ public class Utilidades {
         double res = 0;
         double tmp = 0;
         double aux2 = 0;
-// calcula el resultado
+        // calcula el resultado
         res = pr * cn;
         if (dc > 0) {
             res = res - (res * dc);
@@ -23,7 +23,7 @@ public class Utilidades {
         if (ap) {
             res = res + (res * pp);
         }
-// imprime restaurante
+        // imprime restaurante
         System.out.println("RESTAURANTE EL BUEN SABOR - calculo aplicado");
         aux2 = res;
         return aux2;
@@ -38,7 +38,7 @@ public class Utilidades {
             }
             i++;
         }// fin while
-// reinicia si no hay nada - efecto secundario no documentado
+        // reinicia si no hay nada - efecto secundario no documentado
         if (cont == 0) {
             Datos.tot = 0;
             Datos.tmp = "";
@@ -47,22 +47,22 @@ public class Utilidades {
     }
 
     public static void reiniciar() {
-// metodo antiguo de calculo - pendiente revisar
-// public static double calcOld(double precio, int cant){
-// double resultado = 0;
-// resultado = precio * cant;
-// resultado = resultado + (resultado * 0.19);
-// if(resultado > 50000){
-// resultado = resultado + (resultado * 0.10);}
-// System.out.println("RESTAURANTE EL BUEN SABOR");
-// System.out.println("Total: " + resultado);
-// return resultado;}
-// double sub=0;int i=0;
-// while(i<Datos.nom.length){
-// sub=sub+Datos.p[i]*Datos.cant[i];i++;}
-// if(sub>50000){ sub=sub+(sub*0.19); sub=sub+(sub*0.10); }
-// else{ sub=sub+(sub*0.19); }
-// Datos.tot=sub;
+        // metodo antiguo de calculo - pendiente revisar
+        // public static double calcOld(double precio, int cant){
+        // double resultado = 0;
+        // resultado = precio * cant;
+        // resultado = resultado + (resultado * 0.19);
+        // if(resultado > 50000){
+        // resultado = resultado + (resultado * 0.10);}
+        // System.out.println("RESTAURANTE EL BUEN SABOR");
+        // System.out.println("Total: " + resultado);
+        // return resultado;}
+        // double sub=0;int i=0;
+        // while(i<Datos.nom.length){
+        // sub=sub+Datos.p[i]*Datos.cant[i];i++;}
+        // if(sub>50000){ sub=sub+(sub*0.19); sub=sub+(sub*0.10); }
+        // else{ sub=sub+(sub*0.19); }
+        // Datos.tot=sub;
         int i = 0;
         while (i < Datos.cant.length) {
             Datos.cant[i] = 0;
