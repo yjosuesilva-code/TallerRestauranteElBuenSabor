@@ -16,10 +16,10 @@ public class Proceso {
         double aux = 0;
         int cont = 0;
         int i = 0;
-        while (i < Datos.nom.length) {
-            if (Datos.cant[i] > 0) {
+        while (i < Datos.nombres.length) {
+            if (Datos.cantidades[i] > 0) {
                 // multiplica precio por cantidad
-                sub = sub + Datos.p[i] * Datos.cant[i];
+                sub = sub + Datos.precios[i] * Datos.cantidades[i];
                 cont = cont + 1;
             }
             i++;
@@ -53,8 +53,8 @@ public class Proceso {
                 tot = sub + iva;
             }
         }// fin if-else cont
-        Datos.est = 1;
-        Datos.tot = tot;
+        Datos.estadoMesa = 1;
+        Datos.total = tot;
         return tot;
     }
 

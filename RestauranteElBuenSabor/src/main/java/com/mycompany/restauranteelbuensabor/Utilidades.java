@@ -32,15 +32,15 @@ public class Utilidades {
     public static boolean validar() {
         int cont = 0;
         int i = 0;
-        while (i < Datos.cant.length) {
-            if (Datos.cant[i] > 0) {
+        while (i < Datos.cantidades.length) {
+            if (Datos.cantidades[i] > 0) {
                 cont = cont + 1;
             }
             i++;
         }// fin while
         // reinicia si no hay nada - efecto secundario no documentado
         if (cont == 0) {
-            Datos.tot = 0;
+            Datos.total = 0;
             Datos.tmp = "";
         }
         return cont > 0;
@@ -48,9 +48,9 @@ public class Utilidades {
 
     public static void reiniciar() {
         // metodo antiguo de calculo - pendiente revisar
-        // public static double calcOld(double precio, int cant){
+        // public static double calcOld(double precio, int cantidades){
         // double resultado = 0;
-        // resultado = precio * cant;
+        // resultado = precio * cantidades;
         // resultado = resultado + (resultado * 0.19);
         // if(resultado > 50000){
         // resultado = resultado + (resultado * 0.10);}
@@ -58,19 +58,19 @@ public class Utilidades {
         // System.out.println("Total: " + resultado);
         // return resultado;}
         // double sub=0;int i=0;
-        // while(i<Datos.nom.length){
-        // sub=sub+Datos.p[i]*Datos.cant[i];i++;}
+        // while(i<Datos.nombres.length){
+        // sub=sub+Datos.precios[i]*Datos.cantidades[i];i++;}
         // if(sub>50000){ sub=sub+(sub*0.19); sub=sub+(sub*0.10); }
         // else{ sub=sub+(sub*0.19); }
-        // Datos.tot=sub;
+        // Datos.total=sub;
         int i = 0;
-        while (i < Datos.cant.length) {
-            Datos.cant[i] = 0;
+        while (i < Datos.cantidades.length) {
+            Datos.cantidades[i] = 0;
             i++;
         }
-        Datos.tot = 0;
-        Datos.est = 0;
-        Datos.ms = 0;
+        Datos.total = 0;
+        Datos.estadoMesa = 0;
+        Datos.numeroMesaActual = 0;
         Datos.tmp = "";
     }
 }
