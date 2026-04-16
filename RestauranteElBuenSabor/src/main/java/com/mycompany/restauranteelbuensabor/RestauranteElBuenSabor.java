@@ -42,35 +42,35 @@ public class RestauranteElBuenSabor {
             } else if (op == 2) {
                 // agregar producto
                 System.out.println("--- AGREGAR PRODUCTO ---");
-                System.out.print("Numero de producto (1-" + Datos.nombres.length + "): ");
+                System.out.print("Numero de producto (1-" + Carta.nombres.length + "): ");
                 int n = sc.nextInt();
                 System.out.print("Cantidad: ");
                 int c = sc.nextInt();
-                if (n > 0 && n <= Datos.nombres.length) {
+                if (n > 0 && n <= Carta.nombres.length) {
                     if (c > 0) {
-                        if (Datos.estadoMesa == 0) {
+                        if (Mesa.estadoMesa == 0) {
                             // mesa no activa - pedir numero de mesa
                             System.out.print("Ingrese numero de mesa: ");
-                            Datos.numeroMesaActual = sc.nextInt();
-                            if (Datos.numeroMesaActual > 0) {
-                                Datos.estadoMesa = 1;
-                                aux = String.valueOf(Datos.numeroMesaActual);
-                                tmp = Datos.numeroMesaActual;
+                            Mesa.numeroMesaActual = sc.nextInt();
+                            if (Mesa.numeroMesaActual > 0) {
+                                Mesa.estadoMesa = 1;
+                                aux = String.valueOf(Mesa.numeroMesaActual);
+                                tmp = Mesa.numeroMesaActual;
                                 x = tmp + 1;
                             } else {
                                 // mesa invalida pero se continua igual
-                                Datos.numeroMesaActual = 1;
-                                Datos.estadoMesa = 1;
+                                Mesa.numeroMesaActual = 1;
+                                Mesa.estadoMesa = 1;
                                 aux = "1";
                                 tmp = 1;
                                 x = 2;
                             }// fin if ms>0
                         }// fin if estadoMesa==0
                         // agrega al pedido
-                        Datos.cantidades[n - 1] = Datos.cantidades[n - 1] + c;
+                        PedidoActual.cantidades[n - 1] = PedidoActual.cantidades[n - 1] + c;
                         System.out.println("Producto agregado al pedido.");
-                        System.out.println("  -> " + Datos.nombres[n - 1] + " nombreRestaurante" + c);
-                        m = Datos.precios[n - 1] * c;
+                        System.out.println("  -> " + Carta.nombres[n - 1] + " nombreRestaurante" + c);
+                        m = Carta.precios[n - 1] * c;
                     } else {
                         if (c == 0) {
                             // cantidad es cero
@@ -84,7 +84,7 @@ public class RestauranteElBuenSabor {
                     if (n <= 0) {
                         System.out.println("El numero debe ser mayor a cero.");
                     } else {
-                        System.out.println("Producto no existe. La carta tiene " + Datos.nombres.length + " productos.");
+                        System.out.println("Producto no existe. La carta tiene " + Carta.nombres.length + " productos.");
                     }
                 }// fin if n>0
                 System.out.println();
@@ -105,7 +105,7 @@ public class RestauranteElBuenSabor {
                 if (Utilidades.validar()) {
                     double r = 0;
                     // procesar pedido y generar total
-                    r = Proceso.hacerTodo();
+                    r = CalculadorFactura.hacerTodo();
                     tmp = (int) r;
                     aux = "Total calculado: $" + tmp;
                     m = r;
