@@ -10,8 +10,6 @@ package com.mycompany.restauranteelbuensabor;
  */
 public class Datos {
     public static int[] cantidades = {0, 0, 0, 0, 0, 0, 0, 0};
-    public static int numeroMesaActual = 0;
-    public static int estadoMesa = 0;
     public static double total = 0;
     public static String tmp = "";
 }
