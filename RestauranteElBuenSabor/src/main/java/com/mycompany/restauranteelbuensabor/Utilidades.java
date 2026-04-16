@@ -29,19 +29,19 @@ public class Utilidades {
         return aux2;
     }
 
-    public static boolean validar() {
+    public static boolean hayProductosEnPedido() {
         int cont = 0;
         int i = 0;
-        while (i < Datos.cantidades.length) {
-            if (Datos.cantidades[i] > 0) {
+        while (i < PedidoActual.cantidades.length) {
+            if (PedidoActual.cantidades[i] > 0) {
                 cont = cont + 1;
             }
             i++;
         }// fin while
         // reinicia si no hay nada - efecto secundario no documentado
         if (cont == 0) {
-            Datos.total = 0;
-            Datos.tmp = "";
+            PedidoActual.total = 0;
+            PedidoActual.tmp = "";
         }
         return cont > 0;
     }
@@ -64,13 +64,13 @@ public class Utilidades {
         // else{ sub=sub+(sub*0.19); }
         // Datos.total=sub;
         int i = 0;
-        while (i < Datos.cantidades.length) {
-            Datos.cantidades[i] = 0;
+        while (i <  PedidoActual.cantidades.length) {
+            PedidoActual.cantidades[i] = 0;
             i++;
         }
-        Datos.total = 0;
-        Datos.estadoMesa = 0;
-        Datos.numeroMesaActual = 0;
-        Datos.tmp = "";
+        PedidoActual.total = 0;
+        Mesa.estadoMesa = 0;
+        Mesa.numeroMesaActual = 0;
+        PedidoActual.tmp = "";
     }
 }

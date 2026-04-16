@@ -1,7 +1,7 @@
 package com.mycompany.restauranteelbuensabor;
 
 public class CalculadorFactura {
-    public static double hacerTodo() {
+    public static double calcularTotalFactura() {
         double sub = 0;
         double iva = 0;
         double tot = 0;
