@@ -9,25 +9,6 @@ package com.mycompany.restauranteelbuensabor;
  * @author alfre
  */
 public class Utilidades {
-    public static double calcular(double pr, double cn, double dc, double iv, double pp, int ni, boolean ap) {
-        double res = 0;
-        double tmp = 0;
-        double aux2 = 0;
-        // calcula el resultado
-        res = pr * cn;
-        if (dc > 0) {
-            res = res - (res * dc);
-        }
-        tmp = res * iv;
-        res = res + tmp;
-        if (ap) {
-            res = res + (res * pp);
-        }
-        // imprime restaurante
-        System.out.println("RESTAURANTE EL BUEN SABOR - calculo aplicado");
-        aux2 = res;
-        return aux2;
-    }
 
     public static boolean hayProductosEnPedido() {
         int cont = 0;
@@ -39,10 +20,6 @@ public class Utilidades {
             i++;
         }
         return cont > 0;
-    }
-    public static void reiniciarPedido() {
-        PedidoActual.total = 0;
-        PedidoActual.tmp = "";
     }
 
     public static void reiniciar() {

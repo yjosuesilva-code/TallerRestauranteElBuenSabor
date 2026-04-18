@@ -1,52 +1,57 @@
 package com.mycompany.restauranteelbuensabor;
 
 public class CalculadorFactura {
-    public static double calcularTotalFactura() {
-        double sub = 0;
-        double iva = 0;
-        double tot = 0;
-        double aux = 0;
-        int cont = 0;
-        int i = 0;
-        while (i < Carta.nombres.length) {
-            if (PedidoActual.cantidades[i] > 0) {
-                // multiplica precio por cantidad
-                sub = sub + Carta.precios[i] * PedidoActual.cantidades[i];
-                cont = cont + 1;
+
+    private static final double TASA_IVA            = 0.19;
+    private static final double TASA_PROPINA        = 0.10;
+    private static final double TASA_DESCUENTO      = 0.05;
+    private static final double UMBRAL_PROPINA      = 50000;
+    private static final int    MIN_ITEMS_DESCUENTO = 3;
+
+
+    public static double calcularSubtotal() {
+        double subtotal = 0;
+        int indice = 0;
+        while (indice < Carta.nombres.length) {
+            if (PedidoActual.cantidades[indice] > 0) {
+                subtotal = subtotal + Carta.precios[indice] * PedidoActual.cantidades[indice];
             }
-            i++;
-        }// fin while
-        if (cont > 3) {
-            if (sub > 0) {
-                aux = sub - (sub * 0.05);
-                if (aux > 50000) {
-                    iva = aux * 0.19;
-                    // suma iva al subtotal con descuento
-                    tot = aux + iva;
-                    tot = tot + (tot * 0.10);
-                } else {
-                    // suma iva al subtotal
-                    iva = aux * 0.19;
-                    tot = aux + iva;
-                }
-            }// fin if sub>0
-// version anterior - no borrar
-// sub = sub * 1.19;
-// if(sub > 40000) sub = sub + (sub*0.10);
-// return sub;
-        } else {
-            if (sub > 50000) {
-                iva = sub * 0.19;
-                // suma iva al subtotal
-                tot = sub + iva;
-                tot = tot + (tot * 0.10);
-            } else {
-                iva = sub * 0.19;
-                tot = sub + iva;
+            indice++;
+        }
+        return subtotal;
+    }
+
+    public static double aplicarDescuento(double subtotal) {
+        int cantidadItems = 0;
+        int indice = 0;
+        while (indice < PedidoActual.cantidades.length) {
+            if (PedidoActual.cantidades[indice] > 0) {
+                cantidadItems = cantidadItems + 1;
             }
-        }// fin if-else cont
-        Mesa.estadoMesa = 1;
-        PedidoActual.total = tot;
-        return tot;
+            indice++;
+        }
+        if (cantidadItems > MIN_ITEMS_DESCUENTO) {
+            return subtotal - (subtotal * TASA_DESCUENTO);
+        }
+        return subtotal;
+    }
+    public static double calcularIVA(double base) {
+        return base * TASA_IVA;
+    }
+
+    public static double calcularPropina(double base) {
+        if (base > UMBRAL_PROPINA) {
+            return base * TASA_PROPINA;
+        }
+        return 0;
+    }
+
+    public static double calcularTotal() {
+        double subtotal         = calcularSubtotal();
+        double conDescuento     = aplicarDescuento(subtotal);
+        double iva              = calcularIVA(conDescuento);
+        double totalConIva      = conDescuento + iva;
+        double propina          = calcularPropina(totalConIva);
+        return totalConIva + propina;
     }
 }
