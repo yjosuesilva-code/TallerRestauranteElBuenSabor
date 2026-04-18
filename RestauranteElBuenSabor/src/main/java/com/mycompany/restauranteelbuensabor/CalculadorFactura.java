@@ -9,27 +9,11 @@ public class CalculadorFactura {
     private static final int    MIN_ITEMS_DESCUENTO = 3;
 
 
-    public static double calcularSubtotal() {
-        double subtotal = 0;
-        int indice = 0;
-        while (indice < Carta.nombres.length) {
-            if (PedidoActual.cantidades[indice] > 0) {
-                subtotal = subtotal + Carta.precios[indice] * PedidoActual.cantidades[indice];
-            }
-            indice++;
-        }
-        return subtotal;
+    public static double calcularSubtotal(Pedido pedido) {
+        return pedido.calcularSubtotal();
     }
 
-    public static double aplicarDescuento(double subtotal) {
-        int cantidadItems = 0;
-        int indice = 0;
-        while (indice < PedidoActual.cantidades.length) {
-            if (PedidoActual.cantidades[indice] > 0) {
-                cantidadItems = cantidadItems + 1;
-            }
-            indice++;
-        }
+    public static double aplicarDescuento(double subtotal, int cantidadItems) {
         if (cantidadItems > MIN_ITEMS_DESCUENTO) {
             return subtotal - (subtotal * TASA_DESCUENTO);
         }
@@ -46,9 +30,9 @@ public class CalculadorFactura {
         return 0;
     }
 
-    public static double calcularTotal() {
-        double subtotal         = calcularSubtotal();
-        double conDescuento     = aplicarDescuento(subtotal);
+    public static double calcularTotal(Pedido pedido) {
+        double subtotal         = calcularSubtotal(pedido);
+        double conDescuento     = aplicarDescuento(subtotal, pedido.contarItemsDiferentes());
         double iva              = calcularIVA(conDescuento);
         double totalConIva      = conDescuento + iva;
         double propina          = calcularPropina(totalConIva);
