@@ -37,13 +37,12 @@ public class Utilidades {
                 cont = cont + 1;
             }
             i++;
-        }// fin while
-        // reinicia si no hay nada - efecto secundario no documentado
-        if (cont == 0) {
-            PedidoActual.total = 0;
-            PedidoActual.tmp = "";
         }
         return cont > 0;
+    }
+    public static void reiniciarPedido() {
+        PedidoActual.total = 0;
+        PedidoActual.tmp = "";
     }
 
     public static void reiniciar() {
