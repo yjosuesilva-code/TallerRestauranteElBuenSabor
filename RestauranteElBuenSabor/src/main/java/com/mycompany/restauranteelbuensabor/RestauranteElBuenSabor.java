@@ -116,7 +116,6 @@ public class RestauranteElBuenSabor {
                 }
             }
         }
-
         scanner.close();
     }
 }
